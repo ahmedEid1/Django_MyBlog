@@ -2,7 +2,7 @@ import django
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from taggit.managers import TaggableManager
 
 # Creating a customized manager
 
@@ -15,6 +15,7 @@ class PublishedManager(models.Manager):
 class Post(models.Model):
     objects = models.Manager()
     published = PublishedManager()
+    tags = TaggableManager()
 
     STATUS_CHOICE = (('draft', 'Draft'), ('published', 'Published'))
 
